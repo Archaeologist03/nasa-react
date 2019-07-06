@@ -1,0 +1,39 @@
+.navContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(64, 167, 38, 0.185);
+  border-radius: 2%;
+  border: 2px solid green;
+
+  ul {
+    padding: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    display: flex;
+
+    :not(:last-child) {
+      padding-right: 20px;
+    }
+
+    li {
+      font-size: 1.2rem;
+      list-style: none;
+    }
+  }
+}
+
+.navLink {
+  color: rgb(0, 153, 255);
+  text-decoration: none;
+  border: 2px solid rgba(163, 196, 19, 0.644);
+  border-radius: 2%;
+  padding: 5px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: rgba(218, 214, 210, 0.534);
+  }
+}

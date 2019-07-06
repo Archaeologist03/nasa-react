@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match Logo snapshot 1`] = `
+<div
+  className="logoStyle"
+>
+  <img
+    alt=""
+    src="icons8-nasa.svg"
+  />
+</div>
+`;

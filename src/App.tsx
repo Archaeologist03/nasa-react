@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 
 import Logo from './components/Logo/Logo';
+import Navigation from './components/Navigation/Navigation';
+
+import { apodBaseUrl, apiKey } from './assets/urls';
 
 const App: React.FC = () => {
   const [nasaImg, setNasaImg] = useState('');
 
   useEffect(() => {
-    const nasaApiKey = process.env.REACT_APP_NASA_API_KEY;
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}`)
+    fetch(`${apodBaseUrl}?${apiKey}`)
       .then((resp) => resp.json())
       .then((data) => {
         setNasaImg(data.url);
@@ -19,10 +21,11 @@ const App: React.FC = () => {
     <div className='App'>
       <header className='App-header' />
       <Logo />
+      <Navigation />
       <img
         alt=''
         src={nasaImg}
-        style={{ position: 'absolute', top: 0, left: 0 }}
+        style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
       />
     </div>
   );
