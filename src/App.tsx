@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.scss';
 
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
-
-import { apodBaseUrl, apiKey } from './assets/urls';
+import DailyImage from './components/DailyImage/DailyImage';
+import HamburgerIcon from './components/HamburgerIcon/HamburgerIcon';
 
 const App: React.FC = () => {
-  const [nasaImg, setNasaImg] = useState('');
-
-  useEffect(() => {
-    fetch(`${apodBaseUrl}?${apiKey}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setNasaImg(data.url);
-      });
-  }, []);
-
   return (
-    <div className='App'>
-      <header className='App-header' />
-      <Logo />
-      <Navigation />
-      <img
-        alt=''
-        src={nasaImg}
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
-      />
-    </div>
+    <Router>
+      <div className='App'>
+        {/* <header className='App-header' /> */}
+        {/* <Logo /> */}
+        {/* <Navigation /> */}
+        <HamburgerIcon />
+      </div>
+
+      <div style={{ border: '2px solid yellow' }}>
+        <Route path='/' exact component={DailyImage} />
+        <Route path='/images/' render={() => <p> images</p>} />
+        <Route path='/earth/' render={() => <p> earth</p>} />
+      </div>
+    </Router>
   );
 };
 
