@@ -1,17 +1,82 @@
 body {
-  background: #da4453; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to bottom,
-    #89216b,
-    #da4453
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to bottom,
-    #89216b,
-    #da4453
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  // background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  background: #da4453;
+  background: -webkit-linear-gradient(to bottom, #89216b, #da4453);
+  background: linear-gradient(to bottom, #89216b, #da4453);
 
   min-height: 100vh;
 }
+
+@media (min-width: 1024px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktopMenu {
+    display: none;
+  }
+}
+
+.nav-container {
+  z-index: 5;
+}
+
+.page-container {
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  height: 100vh;
+  max-height: 100vh;
+  padding-top: 100px;
+  // padding-bottom: 400px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  transition: 1s ease-in-out;
+  overflow: hidden;
+  border: 2px solid yellow;
+
+  // @media only screen and (max-width: 468px) {
+  //   padding-top: 80px;
+  // }
+}
+
+.page-enter {
+  transform: translateY(100%) scale(0);
+  opacity: 0;
+  // transition: transform 1s, opacity 3s;
+}
+
+.page-enter-active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  // transition: 2s cubic-bezier(0.4, 1.25, 0.52, -0.27);
+}
+
+.page-exit {
+  transform: translateX(100%) scale(0);
+  opacity: 0.01;
+  // transition: transform 1s, opacity 0.3s;
+  // transition: 1s cubic-bezier(0.4, 1.25, 0.52, -0.27);
+}
+
+// .page-enter {
+//   opacity: 0;
+//   z-index: 1;
+// }
+
+// .page-enter.page-enter-active {
+//   opacity: 1;
+//   transition: opacity 2s ease-in;
+// }
+
+// .page-exit {
+//   transition: opacity 1s ease-in;
+
+// }

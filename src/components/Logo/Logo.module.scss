@@ -1,5 +1,14 @@
 .logoStyle {
+  position: absolute;
   color: purple;
   font-size: 55px;
-  z-index: 5;
+  z-index: 1;
+
+  @media (min-width: 1024px) {
+    left: 5%;
+  }
+
+  @media (max-width: 1024px) {
+    right: 5%;
+  }
 }

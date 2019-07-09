@@ -2,4 +2,43 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  height: 100vh;
+  overflow: hidden;
+  transition: 1s;
+}
+
+.titleContainer {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+
+  h3 {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 6px rgb(33, 64, 240);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+.copyrightContainer {
+  position: absolute;
+  top: 90%;
+  left: 30%;
+  transform: translateX(-50%);
+  z-index: 0;
+
+  p {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 6px rgb(33, 64, 240);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 }

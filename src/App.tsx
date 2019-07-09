@@ -1,28 +1,50 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import './App.scss';
 
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import DailyImage from './components/DailyImage/DailyImage';
-import HamburgerIcon from './components/HamburgerIcon/HamburgerIcon';
+import MobileNav from './components/MobileNav/MobileNav';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div className='App'>
-        {/* <header className='App-header' /> */}
-        {/* <Logo /> */}
-        {/* <Navigation /> */}
-        <HamburgerIcon />
-      </div>
+      <Logo />
 
-      <div style={{ border: '2px solid yellow' }}>
-        <Route path='/' exact component={DailyImage} />
-        <Route path='/images/' render={() => <p> images</p>} />
-        <Route path='/earth/' render={() => <p> earth</p>} />
-      </div>
+      <nav className='nav-container'>
+        {/* Renders either of these two, based on device size */}
+        <div className='mobileMenu'>
+          <MobileNav />
+        </div>
+        <div className='desktopMenu'>
+          <Navigation />
+        </div>
+      </nav>
+
+      <Route
+        render={({ location }) => {
+          return (
+            <TransitionGroup>
+              <CSSTransition
+                key={location.pathname}
+                timeout={500}
+                classNames='page'>
+                <div className='page-container'>
+                  {' '}
+                  <Switch location={location}>
+                    > <Route path='/' exact component={() => <DailyImage />} />
+                    <Route path='/images/' render={() => <p> images</p>} />
+                    <Route path='/earth/' render={() => <p> earth</p>} />
+                  </Switch>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
+          );
+        }}
+      />
     </Router>
   );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './HamburgerIcon.module.scss';
+import styles from './MobileNav.module.scss';
 
-const HamburgerIcon = () => {
+const MobileMenu = () => {
   return (
     <nav>
       <div className={styles.menuToggle}>
@@ -50,4 +50,4 @@ const HamburgerIcon = () => {
   );
 };
 
-export default HamburgerIcon;
+export default MobileMenu;
