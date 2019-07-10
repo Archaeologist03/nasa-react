@@ -6,8 +6,9 @@ import './App.scss';
 
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
-import DailyImage from './components/DailyImage/DailyImage';
 import MobileNav from './components/MobileNav/MobileNav';
+import DailyImage from './components/DailyImage/DailyImage';
+import ImageSearch from './components/ImageSearch/ImageSearch';
 
 const App: React.FC = () => {
   return (
@@ -36,7 +37,7 @@ const App: React.FC = () => {
                   {' '}
                   <Switch location={location}>
                     > <Route path='/' exact component={() => <DailyImage />} />
-                    <Route path='/images/' render={() => <p> images</p>} />
+                    <Route path='/images/' component={() => <ImageSearch />} />
                     <Route path='/earth/' render={() => <p> earth</p>} />
                   </Switch>
                 </div>
