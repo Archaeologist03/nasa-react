@@ -11,7 +11,9 @@ const ImageSearch = () => {
   const [endingYear, setEndingYear] = useState('');
   const [items, setItems] = useState([]);
 
-  const searchForData = (e: React.MouseEvent<HTMLElement>): void => {
+  const searchForData = async (
+    e: React.MouseEvent<HTMLElement>,
+  ): Promise<void> => {
     e.preventDefault();
 
     const searchWord: string = searchTerm ? searchTerm : 'moon';
@@ -24,19 +26,26 @@ const ImageSearch = () => {
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);
+
+        setItems(data.collection.items);
       });
   };
 
+  // #todo = Use custom hook for async useEffect
   useEffect(
-    (searchTerm = 'moon', startingYear = '2018', endingYear = '2019') => {
+    (searchTerm = 'moon', startingYear = '2018', endingYear = '2019'): void => {
       fetch(
         `${imageBaseUrl}/search?q=${searchTerm}&year_start=${startingYear}&year_end=${endingYear}`,
       )
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data.collection.items);
-
           setItems(data.collection.items);
+          console.log(data.collection.items[0].href);
+          return fetch(data.collection.items[0].href);
+        })
+        .then((data) => data.json())
+        .then((data) => {
+          console.log(data);
         });
     },
     [],
@@ -44,7 +53,17 @@ const ImageSearch = () => {
 
   let itemTitle: string;
 
+  // need to have extra call from fetched data to fetch imgs
+  // let itemImg: string;
+
   if (items[0]) {
+    const itemsWithImg = items.filter((item) => {
+      // @ts-ignore
+      return item.data[0].media_type === 'image';
+    });
+
+    console.log(itemsWithImg);
+
     // @ts-ignore
     itemTitle = items[0].data[0].title;
   } else {
