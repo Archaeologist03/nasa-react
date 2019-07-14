@@ -35,6 +35,7 @@ const DailyImage: React.FC = () => {
   return (
     <section>
       <div>{mediaType === 'video' ? video : image}</div>
+
       <div className={styles.titleContainer}>
         <h3>{title}</h3>
       </div>

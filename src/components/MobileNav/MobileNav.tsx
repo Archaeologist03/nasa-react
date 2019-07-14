@@ -15,17 +15,23 @@ const MobileMenu = () => {
 
         <ul className={styles.menu}>
           <li>
-            <Link className={`${styles.home} ${styles.navLink}`} to='/'>
+            <Link
+              className={`${styles.home} ${styles.navLink} ${styles.listItem}`}
+              to='/'>
               Daily Image - Home
             </Link>
           </li>
           <li>
-            <Link className={`${styles.search} ${styles.navLink}`} to='/images'>
+            <Link
+              className={`${styles.search} ${styles.navLink} ${styles.listItem}`}
+              to='/images'>
               Images - Search
             </Link>
           </li>
           <li>
-            <Link className={`${styles.earth} ${styles.navLink}`} to='/earth'>
+            <Link
+              className={`${styles.earth} ${styles.navLink} ${styles.listItem}`}
+              to='/earth'>
               Earth - Search
             </Link>
           </li>
