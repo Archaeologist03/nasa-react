@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { apodBaseUrl, apiKey } from '../../assets/urls';
 
+import Spinner from '../Spinner/Spinner';
+
 import styles from './DailyImage.module.scss';
 
 const DailyImage: React.FC = () => {
@@ -32,7 +34,8 @@ const DailyImage: React.FC = () => {
   );
   const image = <img src={dailyImageUrl} alt='' className={styles.image} />;
 
-  return (
+  // Display content only when img is ready
+  return dailyImageUrl ? (
     <section>
       <div>{mediaType === 'video' ? video : image}</div>
 
@@ -43,6 +46,8 @@ const DailyImage: React.FC = () => {
         {copyright ? <p>By: {copyright}</p> : null}
       </div>
     </section>
+  ) : (
+    <Spinner />
   );
 };
 
