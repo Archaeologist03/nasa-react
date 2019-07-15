@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { imageBaseUrl } from '../../assets/urls';
 
-import styles from './ImageSearch.module.scss';
+import SearchForm from './SearchForm/SearchForm';
+
+// import styles from './ImageSearch.module.scss';
 
 // #TODO --- Add PAGINATION for extra results(prev,next)
 
@@ -72,33 +74,16 @@ const ImageSearch = () => {
 
   return (
     <section>
-      <div className={styles.inputsContainer}>
-        <input
-          type='text'
-          placeholder='Search term (moon)'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Starting year (2018)'
-          value={startingYear}
-          onChange={(e) => setStartingYear(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Ending year (2019'
-          value={endingYear}
-          onChange={(e) => setEndingYear(e.target.value)}
-        />
-
-        <button type='submit' onClick={(e) => searchForData(e)}>
-          Search
-        </button>
-      </div>
-
       <div>
-        <h3>{itemTitle}</h3>
+        <SearchForm
+          searchTerm={searchTerm}
+          startingYear={startingYear}
+          endingYear={endingYear}
+          setSearchTerm={setSearchTerm}
+          setStartingYear={setStartingYear}
+          setEndingYear={setEndingYear}
+          searchForData={searchForData}
+        />
       </div>
     </section>
   );
