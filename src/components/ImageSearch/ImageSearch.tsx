@@ -55,24 +55,24 @@ const ImageSearch = () => {
     [],
   );
 
-  let itemTitle: string;
+  // let itemTitle: string;
 
-  // need to have extra call from fetched data to fetch imgs
-  // let itemImg: string;
+  // // need to have extra call from fetched data to fetch imgs
+  // // let itemImg: string;
 
-  if (items[0]) {
-    const itemsWithImg = items.filter((item) => {
-      // @ts-ignore
-      return item.data[0].media_type === 'image';
-    });
+  // if (items[0]) {
+  //   const itemsWithImg = items.filter((item) => {
+  //     // @ts-ignore
+  //     return item.data[0].media_type === 'image';
+  //   });
 
-    console.log(itemsWithImg);
+  //   console.log(itemsWithImg);
 
-    // @ts-ignore
-    itemTitle = items[0].data[0].title;
-  } else {
-    itemTitle = '';
-  }
+  //   // @ts-ignore
+  //   itemTitle = items[0].data[0].title;
+  // } else {
+  //   itemTitle = '';
+  // }
 
   return (
     <section>
