@@ -1,5 +1,5 @@
 .inputsContainer {
-  position: absolute;
+  position: relative;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
@@ -11,6 +11,8 @@
   background: rgba(20, 40, 40, 0.479);
   transition: 0.2s;
   background: rgba(16, 78, 78, 0.596);
+  border-radius: 2%;
+  box-shadow: 2px 2px 5px;
 
   input {
     border-radius: 1%;

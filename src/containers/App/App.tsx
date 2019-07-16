@@ -4,11 +4,11 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import './App.scss';
 
-import Logo from './components/Logo/Logo';
-import Navigation from './components/Navigation/Navigation';
-import MobileNav from './components/MobileNav/MobileNav';
-import DailyImage from './components/DailyImage/DailyImage';
-import ImageSearch from './components/ImageSearch/ImageSearch';
+import Logo from '../../components/Logo/Logo';
+import Navigation from '../../components/Navigation/Navigation';
+import MobileNav from '../../components/MobileNav/MobileNav';
+import DailyImage from '../../components/DailyImage/DailyImage';
+import ImageSearch from '../ImageSearch/ImageSearch';
 
 const App: React.FC = () => {
   return (

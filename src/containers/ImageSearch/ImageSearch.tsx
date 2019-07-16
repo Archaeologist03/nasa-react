@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { imageBaseUrl } from '../../assets/urls';
 
-import SearchForm from './SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
+import ImageSearchData from '../../components/ImageSearchData/ImageSearchData';
 
-// import styles from './ImageSearch.module.scss';
+import styles from './ImageSearch.module.scss';
 
 // #TODO --- Add PAGINATION for extra results(prev,next)
-
-// just git rebasing check..
 
 const ImageSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,15 +23,12 @@ const ImageSearch = () => {
     const searchStartYear: string = startingYear ? startingYear : '2018';
     const searchEndYear: string = endingYear ? endingYear : '2019';
 
-    fetch(
+    const response = await fetch(
       `${imageBaseUrl}/search?q=${searchWord}&year_start=${searchStartYear}&year_end=${searchEndYear}`,
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-
-        setItems(data.collection.items);
-      });
+    );
+    const data = await response.json();
+    const onlyImgsItems = onlyDataWithImgs(data.collection.items);
+    setItems(onlyImgsItems);
   };
 
   // #todo = Use custom hook for async useEffect
@@ -43,40 +39,21 @@ const ImageSearch = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          setItems(data.collection.items);
-          console.log(data.collection.items[0].href);
-          return fetch(data.collection.items[0].href);
-        })
-        .then((data) => data.json())
-        .then((data) => {
-          console.log(data);
+          const onlyImgsItems = onlyDataWithImgs(data.collection.items);
+          setItems(onlyImgsItems);
         });
     },
     [],
   );
 
-  // let itemTitle: string;
-
-  // // need to have extra call from fetched data to fetch imgs
-  // // let itemImg: string;
-
-  // if (items[0]) {
-  //   const itemsWithImg = items.filter((item) => {
-  //     // @ts-ignore
-  //     return item.data[0].media_type === 'image';
-  //   });
-
-  //   console.log(itemsWithImg);
-
-  //   // @ts-ignore
-  //   itemTitle = items[0].data[0].title;
-  // } else {
-  //   itemTitle = '';
-  // }
+  const onlyDataWithImgs = (items: []) => {
+    // @ts-ignore
+    return items.filter((item) => item.data[0].media_type === 'image');
+  };
 
   return (
     <section>
-      <div>
+      <div className={styles.searchFormContainer}>
         <SearchForm
           searchTerm={searchTerm}
           startingYear={startingYear}
@@ -86,6 +63,9 @@ const ImageSearch = () => {
           setEndingYear={setEndingYear}
           searchForData={searchForData}
         />
+      </div>
+      <div className={styles.imageSearchDataContainer}>
+        {items[0] ? <ImageSearchData items={items} /> : null}
       </div>
     </section>
   );

@@ -2,9 +2,6 @@ import React from 'react';
 
 import styles from './SearchForm.module.scss';
 
-// just rebase cheeck 2.. on branch.
-// just rebase cheeck 3.. on branch.
-
 interface ISearchFormProps {
   searchTerm: string;
   startingYear: string;

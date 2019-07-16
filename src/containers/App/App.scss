@@ -2,8 +2,8 @@ body {
   background: #da4453;
   background: -webkit-linear-gradient(to bottom, #89216b, #da4453);
   background: linear-gradient(to bottom, #89216b, #da4453);
-
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -24,15 +24,13 @@ body {
 
 .page-container {
   min-height: 100vh;
-  height: 100vh;
-  max-height: 100vh;
-  overflow: hidden;
+
+  overflow-x: hidden;
   border: 2px solid yellow;
 }
 
 .page {
   height: 100vh;
-  max-height: 100vh;
   padding-top: 100px;
   // padding-bottom: 400px;
   position: fixed;
@@ -40,7 +38,7 @@ body {
   width: 100%;
   max-width: 100%;
   transition: 1s ease-in-out;
-  overflow: hidden;
+  // overflow: hidden;
 
   // @media only screen and (max-width: 468px) {
   //   padding-top: 80px;
