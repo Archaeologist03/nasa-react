@@ -98,11 +98,13 @@ a:hover {
   * at the top left of the screen
   */
 .menu {
+  // border: 2px solid red;
   position: absolute;
-  width: 200vw;
-  margin: -100px 0 0 -50px;
+  width: 100vw;
+  margin: -100px 0 0 -20px;
   padding: 50px;
   padding-top: 125px;
+  overflow: hidden;
 
   background: rgba(13, 13, 14, 0.863);
   list-style-type: none;

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import getJpg from '../../assets/utils/getJpg';
 
 import Spinner from '../Spinner/Spinner';
+import Pagination from '../Pagination/Pagination';
 
 import styles from './ImageSearchData.module.scss';
 
@@ -76,6 +77,9 @@ const ImageSearchData = ({ items }: IImageSearchDataProps) => {
         </h5>
       </div>
       <img className={styles.itemImage} src={itemImage} alt='' />
+      <div className={styles.paginationContainer}>
+        <Pagination />
+      </div>
     </section>
   ) : (
     <Spinner />

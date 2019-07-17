@@ -26,6 +26,7 @@ span {
   color: rgb(243, 169, 32);
   padding-right: 5px;
   text-decoration: underline;
+  margin: 0 15px;
 }
 
 .itemImage {
@@ -39,4 +40,8 @@ span {
   min-height: 100%;
   z-index: -1;
   opacity: 0.35;
+}
+
+.paginationContainer {
+  border: 2px solid red;
 }
