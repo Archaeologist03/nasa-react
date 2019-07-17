@@ -13,8 +13,6 @@ import ImageSearch from '../ImageSearch/ImageSearch';
 const App: React.FC = () => {
   return (
     <Router>
-      <Logo />
-
       <nav className='nav-container'>
         {/* Renders either of these two, based on device size */}
         <div className='mobileMenu'>
@@ -34,7 +32,7 @@ const App: React.FC = () => {
                 timeout={500}
                 classNames='page'>
                 <div className='page-container'>
-                  {' '}
+                  <Logo />{' '}
                   <Switch location={location}>
                     > <Route path='/' exact component={() => <DailyImage />} />
                     <Route path='/images/' component={() => <ImageSearch />} />

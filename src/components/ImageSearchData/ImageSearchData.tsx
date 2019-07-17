@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import getJpg from '../../assets/utils/getJpg';
+
 import Spinner from '../Spinner/Spinner';
 
 import styles from './ImageSearchData.module.scss';
@@ -18,7 +20,6 @@ const ImageSearchData = ({ items }: IImageSearchDataProps) => {
   const [itemPhotographer, setItemPhotographer] = useState('');
   const [itemImage, setItemImage] = useState('');
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getData = (items: {}[]): void => {
     let itemTitle: string;
     let itemId: string;
@@ -45,24 +46,34 @@ const ImageSearchData = ({ items }: IImageSearchDataProps) => {
     setItemPhotographer(itemPhotographer);
   };
 
+  // Get Image
   useEffect((): void => {
     // @ts-ignore
     fetch(items[page].href)
       .then((resp) => resp.json())
       .then((data) => {
-        setItemImage(data[0]);
+        console.log(getJpg(data), 232323);
+
+        setItemImage(getJpg(data));
         getData(items);
       });
-  }, [items, getData, page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, page]);
 
   return itemImage ? (
     <section className={styles.container}>
       <div className={styles.textualDataWrapper}>
-        <h3>{itemTitle}</h3>
-        <h5>NASA-ID: {itemId}</h5>
-        <h5>Date Created: {itemDateCreated.substring(0, 10)}</h5>
-        <h5>{itemDescription}</h5>
-        <h5>Taken by: {itemPhotographer}</h5>
+        <h3 className={styles.title}>{itemTitle}</h3>
+        <p className={styles.description}>{itemDescription}</p>
+        <h5 className={styles.itemId}>
+          <span>NASA-ID:</span> {itemId}
+        </h5>
+        <h5>
+          <span>Date Created: </span> {itemDateCreated.substring(0, 10)}
+        </h5>
+        <h5>
+          <span>Taken by:</span> {itemPhotographer}
+        </h5>
       </div>
       <img className={styles.itemImage} src={itemImage} alt='' />
     </section>
