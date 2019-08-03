@@ -3,6 +3,7 @@ import { imageBaseUrl } from '../../assets/urls';
 
 import SearchForm from '../../components/SearchForm/SearchForm';
 import ImageSearchData from '../../components/ImageSearchData/ImageSearchData';
+import Pagination from '../../components/Pagination/Pagination';
 
 import styles from './ImageSearch.module.scss';
 
@@ -13,6 +14,8 @@ const ImageSearch = () => {
   const [startingYear, setStartingYear] = useState('');
   const [endingYear, setEndingYear] = useState('');
   const [items, setItems] = useState([]);
+
+  const [page, setPage] = useState(0);
 
   const searchForData = async (
     e: React.MouseEvent<HTMLElement>,
@@ -39,6 +42,7 @@ const ImageSearch = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
+          console.log(data, 1212);
           const onlyImgsItems = onlyDataWithImgs(data.collection.items);
           setItems(onlyImgsItems);
         });
@@ -65,7 +69,10 @@ const ImageSearch = () => {
         />
       </div>
       <div className={styles.imageSearchDataContainer}>
-        {items[0] ? <ImageSearchData items={items} /> : null}
+        {items[0] ? <ImageSearchData page={page} items={items} /> : null}
+      </div>
+      <div className={styles.paginationWrapper}>
+        <Pagination page={page} setPage={setPage} items={items} />
       </div>
     </section>
   );

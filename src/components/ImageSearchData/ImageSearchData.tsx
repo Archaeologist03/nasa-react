@@ -3,17 +3,15 @@ import React, { useState, useEffect } from 'react';
 import getJpg from '../../assets/utils/getJpg';
 
 import Spinner from '../Spinner/Spinner';
-import Pagination from '../Pagination/Pagination';
 
 import styles from './ImageSearchData.module.scss';
 
 interface IImageSearchDataProps {
   items: {}[];
+  page: number;
 }
 
-const ImageSearchData = ({ items }: IImageSearchDataProps) => {
-  const [page, setPage] = useState(0);
-
+const ImageSearchData = ({ page, items }: IImageSearchDataProps) => {
   const [itemTitle, setItemTitle] = useState('');
   const [itemId, setItemId] = useState('');
   const [itemDateCreated, setItemDateCreated] = useState('');
@@ -77,9 +75,6 @@ const ImageSearchData = ({ items }: IImageSearchDataProps) => {
         </h5>
       </div>
       <img className={styles.itemImage} src={itemImage} alt='' />
-      <div className={styles.paginationContainer}>
-        <Pagination />
-      </div>
     </section>
   ) : (
     <Spinner />
