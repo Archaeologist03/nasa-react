@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8e3f455-bb32-49ab-bea0-09e9ce03c05f/deploy-status)](https://app.netlify.com/sites/nasa-explorer/deploys)
+
 ## Available Scripts
 
 In the project directory, you can run:
