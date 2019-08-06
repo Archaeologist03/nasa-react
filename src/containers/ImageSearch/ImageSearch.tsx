@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { imageBaseUrl } from '../../assets/urls';
 
 import SearchForm from '../../components/SearchForm/SearchForm';
@@ -17,6 +18,22 @@ const ImageSearch = () => {
 
   const [page, setPage] = useState(0);
 
+  // #todo = Use custom hook for async useEffect
+  useEffect(
+    (searchTerm = 'moon', startingYear = '2018', endingYear = '2019'): void => {
+      fetch(
+        `${imageBaseUrl}/search?q=${searchTerm}&year_start=${startingYear}&year_end=${endingYear}`,
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data, 1212);
+          const onlyImgsItems = onlyDataWithImgs(data.collection.items);
+          setItems(onlyImgsItems);
+        });
+    },
+    [],
+  );
+
   const searchForData = async (
     e: React.MouseEvent<HTMLElement>,
   ): Promise<void> => {
@@ -33,22 +50,6 @@ const ImageSearch = () => {
     const onlyImgsItems = onlyDataWithImgs(data.collection.items);
     setItems(onlyImgsItems);
   };
-
-  // #todo = Use custom hook for async useEffect
-  useEffect(
-    (searchTerm = 'moon', startingYear = '2018', endingYear = '2019'): void => {
-      fetch(
-        `${imageBaseUrl}/search?q=${searchTerm}&year_start=${startingYear}&year_end=${endingYear}`,
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          console.log(data, 1212);
-          const onlyImgsItems = onlyDataWithImgs(data.collection.items);
-          setItems(onlyImgsItems);
-        });
-    },
-    [],
-  );
 
   const onlyDataWithImgs = (items: []) => {
     // @ts-ignore

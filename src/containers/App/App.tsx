@@ -9,6 +9,7 @@ import Navigation from '../../components/Navigation/Navigation';
 import MobileNav from '../../components/MobileNav/MobileNav';
 import DailyImage from '../../components/DailyImage/DailyImage';
 import ImageSearch from '../ImageSearch/ImageSearch';
+import Earth from '../Earth/Earth';
 
 const App: React.FC = () => {
   return (
@@ -36,7 +37,7 @@ const App: React.FC = () => {
                   <Switch location={location}>
                     > <Route path='/' exact component={() => <DailyImage />} />
                     <Route path='/images/' component={() => <ImageSearch />} />
-                    <Route path='/earth/' render={() => <p> earth</p>} />
+                    <Route path='/earth/' component={() => <Earth />} />
                   </Switch>
                 </div>
               </CSSTransition>
