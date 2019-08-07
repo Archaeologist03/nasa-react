@@ -1,0 +1,56 @@
+.inputsContainer {
+  position: relative;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  padding: 30px 20px;
+  transition: 0.2s;
+  background: rgba(16, 78, 78, 0.192);
+  border-radius: 2%;
+  box-shadow: 2px 2px 5px;
+
+  input {
+    border-radius: 1%;
+    margin: 15px 0;
+    font-size: 16px;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid rgb(2, 206, 206);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgba(20, 20, 20, 0.2);
+    color: whitesmoke;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(94, 173, 173, 0.705);
+    }
+  }
+
+  :not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.searchBtn {
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid rgba(10, 180, 180, 1);
+  background: rgba(20, 20, 20, 0.6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: 0.4s;
+
+  &:hover {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 10px 80px;
+  }
+}
