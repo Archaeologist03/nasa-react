@@ -9,3 +9,22 @@
   width: fit-content;
   margin-top: 100px;
 }
+
+.earthImageContainer {
+  margin-top: 50px;
+  position: relative;
+
+  p {
+    color: rgb(255, 208, 0);
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    font-size: 1rem;
+
+    span {
+      color: orange;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  }
+}
