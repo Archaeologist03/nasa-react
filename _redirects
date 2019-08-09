@@ -1,0 +1,2 @@
+/nasa/*  https://api.nasa.gov/:splat
+/earth/* https://api.nasa.gov/planetary/earth/imagery

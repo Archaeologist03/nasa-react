@@ -14,15 +14,17 @@ const Earth = () => {
   const [earthImage, setEarthImage] = useState('');
   const [earthId, setEarthId] = useState('');
 
+  // const proxyUrl = 'https://crossorigin.me/';
+
   useEffect((): void => {
     getGeolocation(getInitialData);
   }, []);
 
   // #TODO - Add CORS for deployment.
   const getInitialData = async (lon = '100.75', lat = '1.5') => {
-    const resp = await fetch(
-      `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`,
-    );
+    const url = `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`;
+
+    const resp = await fetch(url);
     const data = await resp.json();
     await setEarthImage(data.url);
     await setEarthId(data.id);
@@ -33,9 +35,8 @@ const Earth = () => {
   ): Promise<void> => {
     e.preventDefault();
 
-    const resp = await fetch(
-      `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`,
-    );
+    const url = `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`;
+    const resp = await fetch(url);
     const data = await resp.json();
 
     if (!data.msg) {
