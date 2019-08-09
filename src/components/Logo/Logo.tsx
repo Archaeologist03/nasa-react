@@ -1,12 +1,14 @@
 import React from 'react';
 
 import styles from './Logo.module.scss';
-import nasaLogoImg from '../../assets/images/icons8-nasa.svg';
 
 const Logo = () => {
   return (
     <div className={styles.logoStyle}>
-      <img alt='' src={nasaLogoImg} />
+      <img
+        alt=''
+        src='https://worldwind.arc.nasa.gov/agrosphere/images/nasa.gif'
+      />
     </div>
   );
 };

@@ -18,6 +18,7 @@ const Earth = () => {
     getGeolocation(getInitialData);
   }, []);
 
+  // #TODO - Add CORS for deployment.
   const getInitialData = async (lon = '100.75', lat = '1.5') => {
     const resp = await fetch(
       `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`,
@@ -27,10 +28,35 @@ const Earth = () => {
     await setEarthId(data.id);
   };
 
+  const searchForData = async (
+    e: React.MouseEvent<HTMLElement>,
+  ): Promise<void> => {
+    e.preventDefault();
+
+    const resp = await fetch(
+      `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`,
+    );
+    const data = await resp.json();
+
+    if (!data.msg) {
+      await setEarthImage(data.url);
+      await setEarthId(data.id);
+    } else {
+      await setEarthImage(earthImage);
+      await setEarthId(earthId);
+    }
+  };
+
   return (
     <section>
       <div className={styles.earthSearchContainer}>
-        <EarthSearchForm lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
+        <EarthSearchForm
+          lat={lat}
+          lon={lon}
+          setLat={setLat}
+          setLon={setLon}
+          searchForData={searchForData}
+        />
       </div>
       <div className={styles.earthImageContainer}>
         {earthImage ? (

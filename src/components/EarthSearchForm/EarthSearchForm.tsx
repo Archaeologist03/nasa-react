@@ -7,6 +7,7 @@ interface IEarthSearchForm {
   lon: string;
   setLat: (arg0: string) => void;
   setLon: (arg0: string) => void;
+  searchForData: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const EarthSearchForm = (props: IEarthSearchForm) => {
@@ -29,8 +30,7 @@ const EarthSearchForm = (props: IEarthSearchForm) => {
       <button
         className={styles.searchBtn}
         type='submit'
-        // onClick={(e) => props.searchForData(e)}
-      >
+        onClick={(e) => props.searchForData(e)}>
         Search
       </button>
     </div>

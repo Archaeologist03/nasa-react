@@ -4,6 +4,11 @@
   font-size: 55px;
   z-index: 1;
 
+  img {
+    width: 75px;
+    height: 75px;
+  }
+
   @media (min-width: 1024px) {
     left: 5%;
   }
