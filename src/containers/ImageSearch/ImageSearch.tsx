@@ -57,7 +57,7 @@ const ImageSearch = () => {
   };
 
   return (
-    <section>
+    <section className={styles.imageSearchWrapper}>
       <div className={styles.searchFormContainer}>
         <SearchForm
           searchTerm={searchTerm}
@@ -69,11 +69,13 @@ const ImageSearch = () => {
           searchForData={searchForData}
         />
       </div>
-      <div className={styles.imageSearchDataContainer}>
-        {items[0] ? <ImageSearchData page={page} items={items} /> : null}
-      </div>
-      <div className={styles.paginationWrapper}>
-        <Pagination page={page} setPage={setPage} items={items} />
+      <div className={styles.dataAndPaginationWrapper}>
+        <div className={styles.imageSearchDataContainer}>
+          {items[0] ? <ImageSearchData page={page} items={items} /> : null}
+        </div>
+        <div className={styles.paginationWrapper}>
+          <Pagination page={page} setPage={setPage} items={items} />
+        </div>
       </div>
     </section>
   );

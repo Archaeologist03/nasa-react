@@ -1,16 +1,42 @@
 .paginationContainer {
-  width: 90%;
+  width: 90vw;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 
   .leftArrow {
-    position: relative;
+    position: absolute;
     left: 0;
   }
 
   .rightArrow {
     position: absolute;
     right: 0;
+  }
+
+  .arrow {
+    border: transparent;
+    background: rgba(139, 170, 211, 0.295);
+    outline: none;
+    transition: 0.4s;
+
+    &:hover {
+      background: rgba(139, 170, 211, 0.548);
+      transform: scale(0.95);
+    }
+
+    &:active {
+      transform: scale(0.93);
+    }
+
+    span {
+      font-size: 35px;
+      font-weight: bold;
+      text-decoration: none;
+      color: rgb(13, 21, 88);
+    }
+    border-radius: 50%;
+
+    padding: 2px;
   }
 }

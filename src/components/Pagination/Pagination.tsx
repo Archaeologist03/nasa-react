@@ -29,11 +29,15 @@ const Pagination = ({ items, page, setPage }: IPaginationProps) => {
 
   return (
     <div className={styles.paginationContainer}>
-      <button onClick={() => prevPage()} className={styles.leftArrow}>
-        {'<---'}
+      <button
+        onClick={() => prevPage()}
+        className={`${styles.leftArrow} ${styles.arrow}`}>
+        <span>&#8672;</span>
       </button>
-      <button onClick={() => nextPage()} className={styles.rightArrow}>
-        {'--->'}
+      <button
+        onClick={() => nextPage()}
+        className={`${styles.rightArrow} ${styles.arrow}`}>
+        <span>&#8674;</span>
       </button>
     </div>
   );

@@ -8,13 +8,17 @@
   justify-content: center;
   width: fit-content;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 
-.imageSearchDataContainer {
-  margin-top: 50px;
-}
-
-.paginationWrapper {
-  border: 2px solid red;
+.dataAndPaginationWrapper {
   position: relative;
+
+  .paginationWrapper {
+    padding: 5px 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
