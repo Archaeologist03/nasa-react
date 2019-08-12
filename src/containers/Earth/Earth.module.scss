@@ -8,17 +8,35 @@
   justify-content: center;
   width: fit-content;
   margin-top: 100px;
+
+  @media (min-width: 1024px) {
+    margin-top: 200px;
+    margin-bottom: 75px;
+  }
 }
 
 .earthImageContainer {
-  margin-top: 50px;
   position: relative;
+  margin: 50px auto 0px auto;
+
+  @media (min-width: 1024px) {
+    width: 50vw;
+  }
+
+  @media (min-width: 1360px) {
+    width: 45vw;
+  }
+
+  img {
+    margin: 0 auto;
+  }
 
   p {
     color: rgb(255, 208, 0);
     position: absolute;
     top: 2%;
-    left: 2%;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1rem;
 
     span {

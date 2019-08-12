@@ -36,7 +36,7 @@ const DailyImage: React.FC = () => {
 
   // Display content only when img is ready
   return dailyImageUrl ? (
-    <section>
+    <section className={styles.dailyImageContainer}>
       <div>{mediaType === 'video' ? video : image}</div>
 
       <div className={styles.titleContainer}>
