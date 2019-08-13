@@ -1,0 +1,5 @@
+- ImageSearch input sanitaization: When year goes over current year app breaks. Fix that. 
+
+- Dont do extra downloading/requesting data if not necessery.
+
+- Test important parts!!!

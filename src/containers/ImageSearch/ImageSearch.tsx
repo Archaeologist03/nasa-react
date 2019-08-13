@@ -26,7 +26,6 @@ const ImageSearch = () => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data, 1212);
           const onlyImgsItems = onlyDataWithImgs(data.collection.items);
           setItems(onlyImgsItems);
         });

@@ -35,10 +35,14 @@ const Earth = () => {
   ): Promise<void> => {
     e.preventDefault();
 
+    setEarthImage('');
+    setEarthId('');
+
     const url = `${earthBaseUrl}?lon=${lon}&lat=${lat}&cloud_score=True&${apiKey}`;
     const resp = await fetch(url);
     const data = await resp.json();
 
+    // if not error(only err has msg)
     if (!data.msg) {
       await setEarthImage(data.url);
       await setEarthId(data.id);

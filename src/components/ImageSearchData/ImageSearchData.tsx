@@ -18,6 +18,7 @@ const ImageSearchData = ({ page, items }: IImageSearchDataProps) => {
   const [itemDescription, setItemDescription] = useState('');
   const [itemPhotographer, setItemPhotographer] = useState('');
   const [itemImage, setItemImage] = useState('');
+  const [spinNewData, setSpinNewData] = useState(false);
 
   const getData = (items: {}[]): void => {
     let itemTitle: string;
@@ -47,19 +48,22 @@ const ImageSearchData = ({ page, items }: IImageSearchDataProps) => {
 
   // Get Image
   useEffect((): void => {
+    setSpinNewData(true);
+
     // @ts-ignore
     fetch(items[page].href)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(getJpg(data), 232323);
-
         setItemImage(getJpg(data));
         getData(items);
+        setSpinNewData(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, page]);
 
-  return itemImage ? (
+  return !itemImage && spinNewData ? (
+    <Spinner />
+  ) : (
     <section className={styles.container}>
       <div className={styles.textualDataWrapper}>
         <h3 className={styles.title}>{itemTitle}</h3>
@@ -76,8 +80,6 @@ const ImageSearchData = ({ page, items }: IImageSearchDataProps) => {
       </div>
       <img className={styles.itemImage} src={itemImage} alt='' />
     </section>
-  ) : (
-    <Spinner />
   );
 };
 

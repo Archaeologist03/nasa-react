@@ -14,6 +14,7 @@ import Earth from '../Earth/Earth';
 const App: React.FC = () => {
   return (
     <Router>
+      <Logo />{' '}
       <nav className='nav-container'>
         {/* Renders either of these two, based on device size */}
         <div className='mobileMenu'>
@@ -23,21 +24,19 @@ const App: React.FC = () => {
           <Navigation />
         </div>
       </nav>
-
       <Route
         render={({ location }) => {
           return (
             <TransitionGroup>
               <CSSTransition
                 key={location.pathname}
-                timeout={500}
+                timeout={1000}
                 classNames='page'>
                 <div className='page-container'>
-                  <Logo />{' '}
                   <Switch location={location}>
-                    > <Route path='/' exact component={() => <DailyImage />} />
-                    <Route path='/images/' component={() => <ImageSearch />} />
-                    <Route path='/earth/' component={() => <Earth />} />
+                    <Route path='/' exact component={() => <DailyImage />} />
+                    <Route path='/images' component={() => <ImageSearch />} />
+                    <Route path='/earth' component={() => <Earth />} />
                   </Switch>
                 </div>
               </CSSTransition>
