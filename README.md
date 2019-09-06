@@ -1,4 +1,4 @@
-#### Need to enable http in browser(deployed version) for Earth route to work. (due to nasa API).
+#### If case of error at earth route: enable http in browser(deployed version) for Earth route to work. (due to nasa API).
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e8e3f455-bb32-49ab-bea0-09e9ce03c05f/deploy-status)](https://app.netlify.com/sites/nasa-explorer/deploys)
 
